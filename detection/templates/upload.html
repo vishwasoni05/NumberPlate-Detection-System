@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Plate Recognizer</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    color: #0046C4;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-text {
+    max-width: 50%;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    margin: 20px 0;
+    color: #555;
+}
+
+.cta-button {
+    background: #0046C4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.cta-button:hover {
+    background: #003399;
+}
+
+.upload-box {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    max-width: 300px;
+}
+
+.upload-box h3 {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.upload-box p {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+#file-input {
+    margin: 10px 0;
+}
+
+.upload-button {
+    background: #0046C4;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.upload-button:hover {
+    background: #003399;
+}
+
+.upload-form {
+            font-family: 'Rajdhani', Arial, sans-serif;
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .upload-form h2 {
+            font-weight: bold;
+            color: #343a40;
+        }
+        .upload-form p {
+            color: #6c757d;
+        }
+        .full-width-btn {
+            width: 100%;
+            border-radius: 25px;
+            background-color: #007bff;
+            border: none;
+        }
+        .full-width-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="logo">PLATE RECOGNIZER</h1>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'usecase' %}">Usecases</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="{% url 'loginpage' %}">Login</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Accurate, Fast,<br>Developer- Friendly ALPR</h1>
+            <p>Automatic License Plate Recognition software that works in all environments, optimized for your location.</p>
+            <button class="cta-button">Get started</button>
+        </div>
+        <div class="upload-form text-center">
+            <h2>Try it! Out</h2>
+            <p>Upload an image (up to 3MB) and we’ll decode the license plate.</p>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="image" class="btn btn-outline-secondary full-width-btn">
+                        Choose an photo:
+                        <input type="file" class="form-control-file" id="image" name="image" accept="image/*" style="display: none;" required>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary full-width-btn">Upload</button>
+            </form>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
